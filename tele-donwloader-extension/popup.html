@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tele Downloader PRO</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="popup-container">
+
+    <!-- ─── ANNOUNCEMENT BANNER ─── -->
+    <div id="announcementBanner" class="announcement-bar" style="display:none;">
+      <span class="announcement-icon">🚀</span>
+      <span class="announcement-text" id="announcementText">Promo Langganan PRO Aktif!</span>
+    </div>
+
+    <!-- ─── HEADER ─── -->
+    <header class="header">
+      <div class="header-top">
+        <div class="logo-group">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" class="icon-svg">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="7 10 12 15 17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <h1 id="appHeaderTitle">Tele Downloader</h1>
+            <div class="logo-sub">
+              <span class="version">v1.2.0</span>
+              <span class="status-indicator" id="statusBadge" title="Status Telegram Web">
+                <span class="status-dot"></span>
+                <span class="status-text">Checking</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <div class="quota-pill" id="quotaBadge" title="Kuota download harian">
+            <span class="quota-icon">⚡</span>
+            <span class="quota-text" id="quotaText">10/10 Free</span>
+          </div>
+
+          <!-- Direct Web Auth / Member Portal Link Button -->
+          <button class="web-action-btn" id="webAuthBtn" title="Buka Portal Web">
+            <span id="webAuthLabel">Masuk / Upgrade ↗</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ─── RESOURCE SUMMARY & FILTER BAR ─── -->
+    <section class="summary-section">
+      <div class="summary-info">
+        <div class="summary-total" id="totalResourcesText">0 media ditemukan</div>
+        <div class="summary-breakdown" id="breakdownText">0 foto · 0 video</div>
+      </div>
+      <div class="summary-actions">
+        <button class="filter-btn active" data-filter="all" id="filterAll">Semua</button>
+        <button class="filter-btn" data-filter="photo" id="filterPhotos">Foto</button>
+        <button class="filter-btn" data-filter="video" id="filterVideos">Video</button>
+      </div>
+    </section>
+
+    <!-- ─── BATCH TOOLBAR ─── -->
+    <section class="batch-toolbar">
+      <div class="select-all-group">
+        <label class="custom-checkbox-label">
+          <input type="checkbox" id="selectAllCheckbox">
+          <span class="custom-checkbox"></span>
+          <span class="select-label">Pilih Semua</span>
+        </label>
+      </div>
+
+      <div class="batch-buttons">
+        <button class="batch-btn primary" id="downloadSelectedBtn" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span id="downloadSelectedLabel">Unduh Pilihan (0)</span>
+        </button>
+
+        <button class="batch-btn secondary" id="downloadAllBtn" title="Download semua media">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 17l6 6 6-6M10 23V3M20 5H4"/>
+          </svg>
+          <span>Unduh Semua</span>
+        </button>
+
+        <button class="batch-btn icon-only" id="scanBtn" title="Pindai Ulang Media">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"/>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ─── MEDIA LIST ─── -->
+    <main class="media-container">
+      <div class="media-list" id="mediaList">
+        <div class="media-empty" id="mediaEmpty">
+          <div class="empty-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="4"/>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+              <line x1="9" y1="9" x2="9.01" y2="9"/>
+              <line x1="15" y1="9" x2="15.01" y2="9"/>
+            </svg>
+          </div>
+          <h3>Belum Ada Media</h3>
+          <p>Buka chat Telegram Web atau putar video untuk mendeteksi media secara otomatis.</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="footer">
+      <div class="footer-stats">
+        <span>Total Diunduh: <strong id="downloadCount">0</strong> file</span>
+      </div>
+      <div class="footer-links">
+        <a href="http://tele-downloader-backend.test/login" target="_blank" class="text-link-btn" id="footerWebLink">Portal Web ↗</a>
+        <span class="dot-sep">•</span>
+        <button class="text-link-btn" id="openHelpBtn">Bantuan</button>
+        <span class="dot-sep">•</span>
+        <button class="text-link-btn" id="resetStatsBtn">Reset</button>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

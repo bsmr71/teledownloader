@@ -1,0 +1,63 @@
+{
+  "manifest_version": 3,
+  "name": "Tele Downloader PRO",
+  "version": "1.2.0",
+  "description": "Download photos, videos, stories, and profile pictures from Telegram Web — even restricted content.",
+  "permissions": [
+    "downloads",
+    "activeTab",
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "*://web.telegram.org/*",
+    "http://tele-downloader-backend.test/*",
+    "http://localhost:*/*",
+    "http://127.0.0.1:*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://web.telegram.org/*"],
+      "js": ["inject.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["*://web.telegram.org/*"],
+      "js": ["jszip.min.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["http://tele-downloader-backend.test/*", "http://localhost:*/*", "http://127.0.0.1:*/*"],
+      "js": ["web-sync.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*", "inject.js"],
+      "matches": ["*://web.telegram.org/*"]
+    }
+  ]
+}

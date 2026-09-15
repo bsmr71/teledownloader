@@ -1,0 +1,320 @@
+/*
+ * Tele Downloader — Content CSS
+ * Seamless styling that blends with Telegram Web's native UI
+ */
+
+/* ══════════════════════════════════════════════
+   DOWNLOAD BUTTON (on each media in chat)
+   Minimal, semi-transparent, blends with Telegram
+   ══════════════════════════════════════════════ */
+
+.tld-media-container {
+  position: relative;
+}
+
+.tld-download-btn {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 999;
+  opacity: 0.8; /* Visible by default so users know it's there */
+  transform: scale(0.9);
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.tld-download-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.tld-media-container:hover .tld-download-btn,
+.tld-download-btn:hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tld-download-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.tld-download-btn:active {
+  transform: scale(0.9) !important;
+}
+
+.tld-download-btn.tld-downloading {
+  background: rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tld-download-btn.tld-done {
+  background: rgba(46, 204, 113, 0.7);
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ══════════════════════════════════════════════
+   VIEWER DOWNLOAD BUTTON (Fullscreen)
+   ══════════════════════════════════════════════ */
+
+.tld-viewer-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: transparent !important;
+  color: var(--color-text-secondary, rgba(255, 255, 255, 0.65));
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  padding: 0;
+  margin: 0;
+}
+
+.tld-viewer-download-btn:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #fff;
+}
+
+.tld-viewer-download-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.tld-viewer-download-btn:active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.tld-viewer-download-btn.tld-downloading {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.tld-viewer-download-btn.tld-done {
+  color: #4dd964;
+}
+
+/* ══════════════════════════════════════════════
+   PROFILE PICTURE DOWNLOAD BUTTON
+   ══════════════════════════════════════════════ */
+
+.tld-profile-btn {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 10;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tld-profile-btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+*:hover > .tld-profile-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tld-profile-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* ══════════════════════════════════════════════
+   STORY DOWNLOAD BUTTON
+   ══════════════════════════════════════════════ */
+
+.tld-story-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 99999;
+  transition: background 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.tld-story-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.tld-story-btn:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.tld-story-btn:active {
+  transform: scale(0.97);
+}
+
+/* ══════════════════════════════════════════════
+   FLOATING BATCH DOWNLOAD BUTTON
+   ══════════════════════════════════════════════ */
+
+.tld-floating-batch-btn {
+  position: fixed;
+  bottom: -100px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: rgba(42, 171, 238, 0.9);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999999;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: bottom 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.15s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.tld-floating-batch-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.tld-floating-batch-btn:hover {
+  transform: scale(1.05);
+}
+
+.tld-floating-batch-btn:active {
+  transform: scale(0.95);
+}
+
+.tld-batch-count-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #ff3b30;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-weight: 800;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* NATIVE MODE (Injected directly into Telegram's bottom toolbar) */
+.tld-floating-batch-btn.tld-native-mode {
+  position: relative;
+  bottom: auto !important;
+  right: auto;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  color: var(--color-text-secondary, #aaa);
+  box-shadow: none;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.tld-floating-batch-btn.tld-native-mode:hover {
+  background: rgba(170, 170, 170, 0.08);
+  color: var(--color-primary, #2AABEE);
+  transform: scale(1);
+}
+
+.tld-floating-batch-btn.tld-native-mode:active {
+  background: rgba(170, 170, 170, 0.15);
+}
+
+.tld-floating-batch-btn.tld-native-mode .tld-batch-count-badge {
+  top: 4px;
+  right: 4px;
+  background: var(--color-primary, #2AABEE);
+}
+
+/* ══════════════════════════════════════════════
+   SPINNER
+   ══════════════════════════════════════════════ */
+
+.tld-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: tld-spin 0.65s linear infinite;
+}
+
+@keyframes tld-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ══════════════════════════════════════════════
+   TOAST NOTIFICATIONS
+   ══════════════════════════════════════════════ */
+
+#tld-toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.tld-toast {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transform: translateX(120%);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: auto;
+  max-width: 320px;
+}
+
+.tld-toast.tld-toast-visible {
+  transform: translateX(0);
+}
