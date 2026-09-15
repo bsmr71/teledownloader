@@ -1,58 +1,249 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 TeleDownloader & Tele Downloader PRO
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel 12">
+  <img src="https://img.shields.io/badge/PHP-8.3%20|%208.4-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.4">
+  <img src="https://img.shields.io/badge/Chrome_Extension-Manifest_V3-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome Extension Manifest V3">
+  <img src="https://img.shields.io/badge/TailwindCSS-v3-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License MIT">
 </p>
 
-## About Laravel
+**TeleDownloader** adalah solusi lengkap (*full-stack ecosystem*) yang menggabungkan **Chrome Extension (Tele Downloader PRO)** untuk mengunduh media dari Telegram Web dengan **SaaS Backend & Admin Panel (Laravel 12)** untuk manajemen lisensi, sistem langganan (*subscription*), kuota unduhan, dan integrasi multi-payment gateway.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📑 Daftar Isi
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [✨ Fitur Utama](#-fitur-utama)
+  - [🧩 Chrome Extension (Tele Downloader PRO)](#-chrome-extension-tele-downloader-pro)
+  - [💻 Backend & Panel Manajemen (Laravel 12)](#-backend--panel-manajemen-laravel-12)
+- [📁 Struktur Repositori](#-struktur-repositori)
+- [⚙️ Persyaratan Sistem](#️-persyaratan-sistem)
+- [🚀 Panduan Instalasi Backend](#-panduan-instalasi-backend)
+- [🧩 Panduan Pemasangan Chrome Extension](#-panduan-pemasangan-chrome-extension)
+- [💳 Integrasi Payment Gateway & Webhook](#-integrasi-payment-gateway--webhook)
+- [🔌 Dokumentasi REST API v1](#-dokumentasi-rest-api-v1)
+- [🛡️ Keamanan & Device Binding](#️-keamanan--device-binding)
+- [📄 Lisensi](#-lisensi)
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ✨ Fitur Utama
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🧩 Chrome Extension (Tele Downloader PRO)
+Dibangun menggunakan standar terbaru **Manifest V3** untuk browser berbasis Chromium (Google Chrome, Microsoft Edge, Brave, Opera):
+* **Unduh Semua Jenis Media**: Mendukung foto, video resolusi tinggi (HD/Original), voice note, pesan video (*round video*), audio, dokumen, story, dan foto profil.
+* **Bypass Restricted Content**: Mampu mengunduh media dari channel atau grup privat Telegram yang mengaktifkan proteksi *Restrict Saving Content* / proteksi forward melalui teknik DOM canvas & blob stream extraction.
+* **Batch Downloader (Multi-Select)**: Memilih banyak pesan media sekaligus dalam 1 klik dan mengemasnya langsung menjadi file arsip `.zip` menggunakan pustaka `JSZip`.
+* **Floating Quick Download Button**: Tombol unduh instan yang tersemat otomatis pada setiap gelembung pesan media di antarmuka Telegram Web (Web K & Web A/Z).
+* **Auto Web-Sync**: Sinkronisasi akun dan lisensi otomatis dari Member Portal ke ekstensi browser tanpa perlu memasukkan token manual.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### 💻 Backend & Panel Manajemen (Laravel 12)
+* **Landing Page Modern**: Halaman penawaran produk yang responsif, modern, dan informatif dilengkapi perbandingan paket harga.
+* **Member Portal**:
+  * Informasi status paket langganan aktif & tanggal kedaluwarsa.
+  * Pemantauan pemakaian kuota unduhan harian secara *real-time*.
+  * Integrasi tombol pairing ekstensi otomatis.
+* **Admin Dashboard & Management**:
+  * **Analisis & Statistik**: Metrik pendapatan, transaksi berhasil, total pengguna, dan volume unduhan harian.
+  * **Manajemen Pengguna**: Monitor pengguna, pengalihan peran (*role* admin/member), reset Device ID, dan pemberian lisensi manual (*grant subscription*).
+  * **Manajemen Paket (*Plans*)**: Atur harga paket (Mingguan, Bulanan, Lifetime), durasi aktif, batas unduhan harian (*daily limit*), serta fitur-fitur paket.
+  * **Manajemen Transaksi**: Riwayat pembayaran, konfirmasi transaksi manual, dan pembatalan transaksi.
+  * **Log Unduhan**: Audit trail komprehensif dari setiap aktivitas unduhan pengguna dengan opsi reset kuota harian.
+  * **Pengaturan Sistem**: Konfigurasi global, pilihan default payment gateway, kredensial API, dan batas limit default.
+* **Multi Payment Gateway**:
+  * **Midtrans** (Snap & Notification Webhook)
+  * **Tripay** (Closed Payment Channel & Signature Verification)
+  * **BRI Direct API** (Integrasi API Bank BRI)
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## 📁 Struktur Repositori
 
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```text
+teledownloader/
+├── app/
+│   ├── Contracts/                 # Interface Service (PaymentGatewayInterface)
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Admin/            # Controller Admin Panel (User, Plan, Transaksi, Setting, Log)
+│   │   │   └── Api/V1/           # Controller API untuk Extension & Webhook
+│   │   └── Middleware/           # Middleware Keamanan & Admin Auth
+│   ├── Models/                   # Model Eloquent (User, Plan, Subscription, Transaction, Log, Setting)
+│   └── Services/Payment/         # Driver Gateway (MidtransService, TripayService, BriApiService, PaymentManager)
+├── config/                       # Konfigurasi Laravel
+├── database/
+│   ├── migrations/               # Skema Database (Users, Plans, Subscriptions, Transactions, Logs)
+│   └── seeders/                  # Seeder Akun Admin Default & Paket Langganan
+├── resources/
+│   ├── views/
+│   │   ├── admin/                # Blade Template Dashboard & CRUD Admin
+│   │   ├── member/               # Blade Template Member Area
+│   │   └── landing.blade.php     # Halaman Depan / Landing Page
+│   └── css/ & js/                # Aset Frontend (Tailwind CSS)
+├── routes/
+│   ├── web.php                   # Rute Web (Landing, Auth, Member, Admin)
+│   └── api.php                   # Rute REST API v1 (Ekstensi & Webhook)
+├── tele-donwloader-extension/    # Source Code Chrome Extension (Manifest V3)
+│   ├── icons/                    # Ikon ekstensi (16, 32, 48, 128px)
+│   ├── background.js             # Service Worker latar belakang
+│   ├── content.js & content.css  # Skrip injeksi DOM Telegram Web
+│   ├── inject.js                 # Skrip bypass & blob interceptor di Telegram
+│   ├── jszip.min.js              # Pustaka kompresi ZIP untuk batch download
+│   ├── manifest.json             # Manifest V3 Configuration
+│   ├── popup.html & popup.js     # Antarmuka Popup Ekstensi
+│   └── web-sync.js               # Skrip pendeteksi sinkronisasi web portal
+└── README.md
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## ⚙️ Persyaratan Sistem
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **PHP**: Versi `8.3` atau `8.4` (dengan ekstensi `pdo`, `mbstring`, `openssl`, `curl`, `json`, `bcmath`)
+- **Composer**: Versi `2.x`
+- **Node.js & NPM**: Versi `18.x` atau lebih baru
+- **Database**: MySQL `8.0+`, MariaDB `10.4+`, atau SQLite `3`
+- **Web Browser**: Google Chrome, Microsoft Edge, Brave, atau browser Chromium lainnya
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🚀 Panduan Instalasi Backend
 
-## Security Vulnerabilities
+### 1. Kloning Repositori
+```bash
+git clone https://github.com/bsmr71/teledownloader.git
+cd teledownloader
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 2. Pasang Dependensi PHP & Node.js
+```bash
+composer install
+npm install
+```
 
-## License
+### 3. Konfigurasi Environment (`.env`)
+Salin file `.env.example` menjadi `.env`:
+```bash
+cp .env.example .env
+```
+Buka file `.env` dan sesuaikan pengaturan database dan URL aplikasi:
+```env
+APP_NAME="TeleDownloader"
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://127.0.0.1:8000
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=teledownloader
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 4. Generate Kunci Aplikasi & Jalankan Migrasi
+```bash
+php artisan key:generate
+php artisan migrate --seed
+```
+
+> [!NOTE]
+> Seeder akan otomatis membuat paket langganan dasar (Starter, Pro, Lifetime) dan akun administrator default:
+> - **Email**: `bismar71@gmail.com`
+> - **Password**: `zabuaz71` *(Segera ubah password setelah login pertama kali di halaman admin)*
+
+### 5. Kompilasi Aset Frontend
+```bash
+npm run build
+```
+
+### 6. Jalankan Server Pengembangan
+```bash
+php artisan serve
+```
+Buka peramban Anda dan akses:
+- **Landing Page**: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+- **Admin Panel**: [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
+- **Member Area**: [http://127.0.0.1:8000/member](http://127.0.0.1:8000/member)
+
+---
+
+## 🧩 Panduan Pemasangan Chrome Extension
+
+1. Buka browser berbasis Chromium (Google Chrome / Brave / Edge).
+2. Kunjungi halaman ekstensi browser dengan mengetikkan:
+   ```text
+   chrome://extensions/
+   ```
+3. Aktifkan tombol **Developer mode** di sudut kanan atas.
+4. Klik tombol **Load unpacked** (*Muat yang belum dibongkar*).
+5. Pilih folder [`tele-donwloader-extension`](file:///c:/laragon/www/teledownloader/tele-donwloader-extension) yang ada di dalam proyek ini.
+6. Ekstensi **Tele Downloader PRO** kini telah terpasang!
+7. Buka [Telegram Web](https://web.telegram.org/) (baik versi K maupun A), dan Anda akan melihat ikon serta tombol unduhan interaktif pada pesan media.
+
+---
+
+## 💳 Integrasi Payment Gateway & Webhook
+
+Konfigurasi kunci API payment gateway dapat diatur melalui dashboard admin pada menu **Settings** atau langsung di file `.env`:
+
+### 1. Midtrans
+```env
+MIDTRANS_SERVER_KEY="your-server-key"
+MIDTRANS_CLIENT_KEY="your-client-key"
+MIDTRANS_IS_PRODUCTION=false
+```
+* **Webhook URL**: `https://domain-anda.com/api/v1/webhook/midtrans`
+
+### 2. Tripay
+```env
+TRIPAY_API_KEY="your-api-key"
+TRIPAY_PRIVATE_KEY="your-private-key"
+TRIPAY_MERCHANT_CODE="your-merchant-code"
+TRIPAY_IS_PRODUCTION=false
+```
+* **Webhook URL**: `https://domain-anda.com/api/v1/webhook/tripay`
+
+### 3. BRI Direct API
+```env
+BRI_CLIENT_ID="your-client-id"
+BRI_CLIENT_SECRET="your-client-secret"
+BRI_ACCOUNT_NUMBER="your-account-number"
+```
+
+---
+
+## 🔌 Dokumentasi REST API v1
+
+Semua rute API beralamat di `/api/v1`:
+
+| Method | Endpoint | Keterangan | Autentikasi |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/config` | Mengambil konfigurasi publik ekstensi | Publik |
+| `GET` | `/plans` | Mengambil daftar paket langganan aktif | Publik |
+| `GET` | `/status` | Cek status kesehatan server API | Publik |
+| `POST` | `/auth/register` | Pendaftaran akun member baru | Publik |
+| `POST` | `/auth/login` | Login member untuk mendapatkan Bearer Token | Publik |
+| `POST` | `/license/activate` | Aktivasi lisensi pada ekstensi | Publik |
+| `POST` | `/license/verify` | Verifikasi validitas lisensi & kuota harian | Publik |
+| `POST` | `/download/track` | Mencatat dan memvalidasi kuota unduhan | Publik |
+| `POST` | `/checkout/create` | Membuat order pembayaran transaksi baru | Publik / Member |
+| `POST` | `/webhook/{gateway}` | Endpoint Webhook Pembayaran (Midtrans / Tripay) | Signature Check |
+| `POST` | `/auth/bind-device` | Menghubungkan ID perangkat ke akun member | Bearer Token |
+
+---
+
+## 🛡️ Keamanan & Device Binding
+
+- **Proteksi 1 Akun 1 Perangkat**: Sistem lisensi menerapkan *Hardware/Browser Device ID Binding* untuk mencegah penggunaan 1 akun berlangganan secara massal di berbagai komputer berbeda tanpa izin.
+- **Validasi Webhook Signature**: Seluruh webhook pembayaran diverifikasi menggunakan hashing tanda tangan digital (*HMAC-SHA256* atau *SHA512*) untuk mencegah pemalsuan status pembayaran.
+- **Sanctum API Token**: Komunikasi antar aplikasi dan ekstensi dilindungi dengan Laravel Sanctum.
+
+---
+
+## 📄 Lisensi
+
+Proyek ini dirilis di bawah lisensi [MIT License](LICENSE).
+Hak Cipta © 2026 TeleDownloader Ecosystem.
